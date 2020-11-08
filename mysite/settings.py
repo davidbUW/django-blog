@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j8_^z#qbxuh$-m$xjrw(zns@7ou(57yd0z8vttacn20)um95tl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -115,8 +116,19 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'blogging/static')
+# STATIC_ROOT = 'mysite/blogging/static'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'

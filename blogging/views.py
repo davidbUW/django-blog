@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import loader
 from blogging.models import Post
+from django.views.generic.list import ListView
 
 
 def stub_view(request, *args, **kwargs):
@@ -24,6 +25,10 @@ def stub_view(request, *args, **kwargs):
 #     return HttpResponse(body, content_type="text/html")
 
 
+"""
+Assignment 8
+After converting from FBV to CBV, this view function was removed
+
 def list_view(request):
     published = Post.objects.exclude(published_date__exact=None)
     posts = published.order_by('-published_date')
@@ -31,3 +36,37 @@ def list_view(request):
     context = {'posts': posts}
     # body = template.render(context)
     return render(request, 'blogging/list.html', context)
+"""
+
+"""
+Assignment 8
+This CBV works by the assignement says to use a `queryset` class attribute in 
+your list view instead of a `model` class attribute
+
+class BlogListView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    ordering = '-published_date'
+    template_name = 'blogging/list.html'
+
+"""
+
+
+class BlogListView(ListView):
+    """
+       Assignment 8
+        when no context_object_name variable is used, a default object_list is
+        created
+
+        context_object_name = 'posts'
+        """
+    queryset = Post.objects.exclude(published_date=None).order_by(
+        '-published_date')
+    paginate_by = 3
+    template_name = 'blogging/list.html'
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% block content %}
+  <h1><span style="color: #0000ff;">Recent Posts</span></h1>
+  {% comment %} here is where the query happens {% endcomment %}
+  {% for post in object_list %} {% comment %} changes posts to object_list, see view comments {% endcomment %}
+  <div class="post">
+    <h2><span style="color: #0000ff;">{{ post }}</span></h2>
+    <p class="byline">
+      Posted by {{ post.author.username }} &mdash; {{ post.published_date }}
+    </p>
+    <div class="post-body">
+      {{ post.text }}
+    </div>
+    <ul class="categories">
+      {% for category in post.categories.all %}
+        <li>{{ category }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+    {% include "blogging/pagination.html" with page=page_obj %}  {% comment %} added pagination {% endcomment %}
+{% endblock %}
+
+{% comment %} Assignment 8 this template not used.  new template with cards is used.  file name changed
+ to list2.html {% endcomment %}

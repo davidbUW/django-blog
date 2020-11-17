@@ -4,7 +4,10 @@
 <html>
   <head>
     <title>My Django Blog</title>
-    <link type="text/css" rel="stylesheet" href="{% static 'django_blog.css' %}">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <link type="text/css" rel="stylesheet" href="{% static 'django_blog.css' %}">
   </head>
   <body>
 
@@ -20,8 +23,10 @@
         {% endif %}
         </ul>
       </div>
+
       <div id="container">
       <div id="content">
+
           {% block content %}
        [content will go here]
       {% endblock %}

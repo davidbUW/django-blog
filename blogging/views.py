@@ -6,7 +6,6 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 
-
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
     if args:
@@ -56,24 +55,18 @@ class BlogListView(ListView):
 
 class BlogListView(ListView):
     """
-       Assignment 8
-        when no context_object_name variable is used, a default object_list is
-        created
+    Assignment 8
+     when no context_object_name variable is used, a default object_list is
+     created
 
-        context_object_name = 'posts'
-        """
-    queryset = Post.objects.exclude(published_date=None).order_by(
-        '-published_date')
+     context_object_name = 'posts'
+    """
+
+    queryset = Post.objects.exclude(published_date=None).order_by("-published_date")
     paginate_by = 3
-    template_name = 'blogging/list.html'
+    template_name = "blogging/list.html"
 
 
 class BlogDetailView(DetailView):
     queryset = Post.objects.exclude(published_date__exact=None)
-    template_name = 'blogging/detail.html'
-
-
-
-
-
-
+    template_name = "blogging/detail.html"

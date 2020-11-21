@@ -1,4 +1,5 @@
 from django.urls import path
+
 # from blogging.views import stub_view, list_view
 from django.conf import settings
 from django.conf.urls.static import static

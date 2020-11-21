@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from blogging.views import BlogListView
+from blogging.views import BlogDetailView
 
 """
 Assignment 8
@@ -17,5 +18,5 @@ urlpatterns = [
 
 urlpatterns = [
     path("", BlogListView.as_view(), name="blog_index"),
-    path("posts/<int:pk>/", BlogListView.as_view(), name="blog_detail"),
+    path("posts/<int:pk>/", BlogDetailView.as_view(), name="blog_detail"),
 ]

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+{#      <h1><span style="color: #0000ff;">Recent Posts</span></h1>#}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+<a class="backlink" href="/">Home</a>
+    <div class="col-md-8 mt-3 left">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h1>{{ post }}</h1>
+{#            <p class="byline">#}
+{#              Posted by {{ post.author.username }} &mdash; {{ post.published_date }}#}
+            <p class="card-text text-muted h6">Posted by {{ post.author.username }} &mdash; {{ post.published_date }} </p>
+{#            </p>#}
+{#            <div class="post-body">#}
+            <p class="card-text"> {{ post.text }}</p>
+            </div>
+            <p class="card-text"><ul class="categories">
+              Categories: {% for category in post.categories.all %}
+                <li>{{ category }}</li>
+              {% endfor %}
+            </ul></p>
+{% endblock %}
+
+
+{#<div class="col-md-8 mt-3 left">#}
+{#            {% comment %} here is where the query happens {% endcomment %}#}
+{#            {% for post in object_list %} {% comment %} changes posts to object_list, see view comments {% endcomment %}#}
+{#            <div class="card mb-4">#}
+{#                <div class="card-body">#}
+{#                    <h2 class="card-title"><a href="{% url 'blog_detail' post.pk %}">{{ post }}</a></h2>#}
+{#                    <p class="card-text text-muted h6">Posted by {{ post.author.username }} &mdash; {{ post.published_date }} </p>#}
+{#                    <p class="card-text">{{post.text|slice:":200" }}</p>#}
+{#                </div>#}
+{#            </div>#}
+{#      {% endfor %}#}
+{#    </div>#}

@@ -128,7 +128,7 @@ STATICFILES_FINDERS = [
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'blogging/static')
 # STATIC_ROOT = 'mysite/blogging/static'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "mysite/blogging/static"),)
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
